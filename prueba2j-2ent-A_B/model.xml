@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="st3">
+				<or mandatory="true" name="SA_SB_st3">
+					<alt mandatory="true" name="SA_st3">
+						<and mandatory="true" name="relationsA">
+							<and mandatory="true" name="R1_SA_st3">
+								<alt mandatory="true" name="A_B">
+									<feature mandatory="true" name="AembB_st3"/>
+									<feature mandatory="true" name="ArefB_st3"/>
+								</alt>
+							</and>
+						</and>
+						<feature mandatory="true" name="A"/>
+					</alt>
+					<alt mandatory="true" name="SB_st3">
+						<and mandatory="true" name="relationsB">
+							<and mandatory="true" name="R1_SB_st3">
+								<alt mandatory="true" name="B_A">
+									<feature mandatory="true" name="BembA_st3"/>
+									<feature mandatory="true" name="BrefA_st3"/>
+								</alt>
+							</and>
+						</and>
+						<feature mandatory="true" name="B"/>
+					</alt>
+				</or>
+				<and name="refs_st3">
+					<and mandatory="true" name="pairRefs_st3">
+						<feature mandatory="true" name="ABrefs_st3"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>SA_SB_st3</var>
+					<disj>
+						<var>SA_st3</var>
+						<var>SB_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ABrefs_st3</var>
+					<conj>
+						<var>SA_st3</var>
+						<conj>
+							<not>
+								<var>R1_SA_st3</var>
+							</not>
+							<conj>
+								<var>SB_st3</var>
+								<not>
+									<var>R1_SB_st3</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>A</var>
+					<disj>
+						<var>ABrefs_st3</var>
+						<var>R1_SB_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>B</var>
+					<disj>
+						<var>ABrefs_st3</var>
+						<var>R1_SA_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB_st3</var>
+					<var>SB_st3</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefA_st3</var>
+					<var>SA_st3</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB_st3</var>
+					<not>
+						<var>BrefA_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB_st3</var>
+					<not>
+						<var>BembA_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefA_st3</var>
+					<not>
+						<var>AembB_st3</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

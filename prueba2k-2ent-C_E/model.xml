@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="sch">
+				<or mandatory="true" name="SC_SE">
+					<alt mandatory="true" name="SC">
+						<and mandatory="true" name="relationsC">
+							<alt mandatory="true" name="R4_SC">
+								<feature mandatory="true" name="CembE"/>
+								<feature mandatory="true" name="CrefE"/>
+							</alt>
+						</and>
+						<feature mandatory="true" name="C"/>
+					</alt>
+					<alt mandatory="true" name="SE">
+						<and mandatory="true" name="relationsE">
+							<alt mandatory="true" name="R4_SE">
+								<feature mandatory="true" name="EembC"/>
+								<feature mandatory="true" name="ErefC"/>
+							</alt>
+						</and>
+						<feature mandatory="true" name="E"/>
+					</alt>
+				</or>
+				<and name="refs">
+					<and mandatory="true" name="refsGroups">
+						<and name="2refs">
+							<feature mandatory="true" name="CErefs"/>
+						</and>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>SC_SE</var>
+					<disj>
+						<var>SC</var>
+						<var>SE</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CErefs</var>
+					<conj>
+						<var>SC</var>
+						<conj>
+							<not>
+								<var>R4_SC</var>
+							</not>
+							<conj>
+								<var>SE</var>
+								<not>
+									<var>R4_SE</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>E</var>
+					<disj>
+						<var>CErefs</var>
+						<var>R4_SC</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>C</var>
+					<disj>
+						<var>CErefs</var>
+						<var>R4_SE</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefE</var>
+					<var>SE</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ErefC</var>
+					<var>SC</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefE</var>
+					<not>
+						<var>ErefC</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefE</var>
+					<not>
+						<var>EembC</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ErefC</var>
+					<not>
+						<var>CembE</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

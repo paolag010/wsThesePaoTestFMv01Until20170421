@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="st3">
+				<or mandatory="true" name="SC_SA_st3">
+					<alt mandatory="true" name="SC_st3">
+						<and mandatory="true" name="relationsC">
+							<and mandatory="true" name="R5_SC_st3">
+								<alt mandatory="true" name="C_E">
+									<feature mandatory="true" name="CembE_st3"/>
+									<feature mandatory="true" name="CrefE_st3"/>
+								</alt>
+							</and>
+						</and>
+						<feature mandatory="true" name="C"/>
+					</alt>
+					<alt mandatory="true" name="SA_st3">
+						<and mandatory="true" name="relationsA">
+							<and mandatory="true" name="R5_SA_st3">
+								<alt mandatory="true" name="A_C">
+									<feature mandatory="true" name="AembC_st3"/>
+									<feature mandatory="true" name="ArefC_st3"/>
+								</alt>
+							</and>
+						</and>
+						<feature mandatory="true" name="A"/>
+					</alt>
+				</or>
+				<and name="refs_st3">
+					<and mandatory="true" name="pairRefs_st3">
+						<feature mandatory="true" name="CArefs_st3"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>SC_SA_st3</var>
+					<disj>
+						<var>SC_st3</var>
+						<var>SA_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CArefs_st3</var>
+					<conj>
+						<var>SC_st3</var>
+						<conj>
+							<not>
+								<var>R5_SC_st3</var>
+							</not>
+							<conj>
+								<var>SA_st3</var>
+								<not>
+									<var>R5_SA_st3</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>A</var>
+					<disj>
+						<var>CArefs_st3</var>
+						<var>R5_SC_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>C</var>
+					<disj>
+						<var>CArefs_st3</var>
+						<var>R5_SA_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefE_st3</var>
+					<var>SA_st3</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefC_st3</var>
+					<var>SC_st3</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefE_st3</var>
+					<not>
+						<var>ArefC_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefE_st3</var>
+					<not>
+						<var>AembC_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefC_st3</var>
+					<not>
+						<var>CembE_st3</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

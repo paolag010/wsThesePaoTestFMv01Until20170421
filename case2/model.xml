@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and abstract="true" mandatory="true" name="S">
+				<and mandatory="true" name="SA">
+					<feature mandatory="true" name="A"/>
+					<alt name="Ar1">
+						<feature mandatory="true" name="AembB"/>
+						<feature mandatory="true" name="ArefB"/>
+						<feature mandatory="true" name="ABref"/>
+					</alt>
+				</and>
+				<and name="SB">
+					<feature mandatory="true" name="B"/>
+					<alt name="Br1">
+						<feature mandatory="true" name="BembA"/>
+						<feature mandatory="true" name="BrefA"/>
+						<feature mandatory="true" name="BAref"/>
+					</alt>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>Ar1</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<conj>
+					<not>
+						<var>ABref</var>
+					</not>
+					<not>
+						<var>ArefB</var>
+					</not>
+				</conj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

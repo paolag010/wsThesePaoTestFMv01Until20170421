@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="sch">
+				<or mandatory="true" name="SA_SB">
+					<alt mandatory="true" name="SA">
+						<and mandatory="true" name="relationsA">
+							<alt mandatory="true" name="R1_SA">
+								<feature mandatory="true" name="AembB"/>
+								<feature mandatory="true" name="ArefB"/>
+							</alt>
+						</and>
+						<feature mandatory="true" name="A"/>
+					</alt>
+					<alt mandatory="true" name="SB">
+						<and mandatory="true" name="relationsB">
+							<alt mandatory="true" name="R1_SB">
+								<feature mandatory="true" name="BembA"/>
+								<feature mandatory="true" name="BrefA"/>
+							</alt>
+						</and>
+						<feature mandatory="true" name="B"/>
+					</alt>
+				</or>
+				<and name="refs">
+					<and mandatory="true" name="refsGroups">
+						<and mandatory="true" name="2refs">
+							<feature mandatory="true" name="ABrefs"/>
+						</and>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>SA_SB</var>
+					<disj>
+						<var>SA</var>
+						<var>SB</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ABrefs</var>
+					<conj>
+						<var>SA</var>
+						<conj>
+							<not>
+								<var>R1_SA</var>
+							</not>
+							<conj>
+								<var>SB</var>
+								<not>
+									<var>R1_SB</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>A</var>
+					<disj>
+						<var>ABrefs</var>
+						<var>R1_SB</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>B</var>
+					<disj>
+						<var>ABrefs</var>
+						<var>R1_SA</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefA</var>
+					<var>SA</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB</var>
+					<not>
+						<var>BrefA</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB</var>
+					<not>
+						<var>BembA</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefA</var>
+					<not>
+						<var>AembB</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

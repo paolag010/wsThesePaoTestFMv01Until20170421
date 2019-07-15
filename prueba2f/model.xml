@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="st3">
+				<or mandatory="true" name="SA-SB_st3">
+					<or mandatory="true" name="SA_st3">
+						<and mandatory="true" name="relationsA">
+							<and mandatory="true" name="R1_SA_st3">
+								<alt mandatory="true" name="A_B">
+									<and mandatory="true" name="AembB_st3">
+										<feature mandatory="true" name="BaseB_st3-1"/>
+									</and>
+									<alt mandatory="true" name="ArefB_st3">
+										<feature mandatory="true" name="BaseB_st3-2"/>
+										<feature mandatory="true" name="rltsB-2"/>
+									</alt>
+								</alt>
+								<or name="rltsB">
+									<and mandatory="true" name="R1_SB_st3-1">
+										<and mandatory="true" name="BembA_st3-1">
+											<and mandatory="true" name="SA_st3-1-1">
+												<feature mandatory="true" name="BaseA_st3-3"/>
+											</and>
+										</and>
+									</and>
+									<alt mandatory="true" name="R2_SB_st3-1">
+										<and mandatory="true" name="BembC_st3-1">
+											<and mandatory="true" name="SC_st3-1-1">
+												<feature mandatory="true" name="BaseC_st3-1-1"/>
+											</and>
+										</and>
+										<feature mandatory="true" name="BrefC_st3-1"/>
+									</alt>
+								</or>
+							</and>
+						</and>
+						<feature mandatory="true" name="A"/>
+					</or>
+					<or mandatory="true" name="SB_st3">
+						<alt mandatory="true" name="R1_SB_st3">
+							<and mandatory="true" name="BembA_st3">
+								<and mandatory="true" name="SA_st3-1">
+									<feature mandatory="true" name="BaseA_st3-1"/>
+								</and>
+							</and>
+							<and mandatory="true" name="BrefA_st3">
+								<alt mandatory="true" name="SA_st3-2">
+									<feature mandatory="true" name="BaseA_st3-2"/>
+									<and mandatory="true" name="R1_SA_st3_2">
+										<and mandatory="true" name="AembB_st3-1">
+											<and mandatory="true" name="SB_st3-1-1">
+												<feature mandatory="true" name="BaseB_st3-3"/>
+											</and>
+										</and>
+									</and>
+								</alt>
+							</and>
+						</alt>
+						<alt mandatory="true" name="R2_SB_st3">
+							<and mandatory="true" name="BembC_st3">
+								<and mandatory="true" name="SC_st3-1">
+									<feature mandatory="true" name="BaseC_st3-1"/>
+								</and>
+							</and>
+							<and mandatory="true" name="BrefC_st3">
+								<alt mandatory="true" name="SC_st3-2">
+									<feature mandatory="true" name="BaseC_st3-2"/>
+									<and mandatory="true" name="R2_SC_st3-1">
+										<and mandatory="true" name="CembB_st3-1">
+											<and mandatory="true" name="SB_C_st3-1-1ttttttt">
+												<feature mandatory="true" name="BaseB_st3-4"/>
+											</and>
+										</and>
+									</and>
+								</alt>
+							</and>
+						</alt>
+						<feature mandatory="true" name="B"/>
+					</or>
+					<or mandatory="true" name="SC_st3">
+						<alt mandatory="true" name="R2_SC_st3">
+							<and mandatory="true" name="CembB_st3">
+								<and mandatory="true" name="SB_st3-1ttt">
+									<feature mandatory="true" name="BaseB_st3-1ttt"/>
+								</and>
+							</and>
+							<and mandatory="true" name="CrefB_st3">
+								<alt mandatory="true" name="SB_st3-2ttt">
+									<feature mandatory="true" name="BaseB_st3-2ttt"/>
+									<and mandatory="true" name="R2_SB_st3_2">
+										<and mandatory="true" name="BembC_st3-1ttt">
+											<and mandatory="true" name="SC_st3-1-1ttt">
+												<feature mandatory="true" name="BaseC_st3-3"/>
+											</and>
+										</and>
+									</and>
+								</alt>
+							</and>
+						</alt>
+						<feature mandatory="true" name="C"/>
+					</or>
+				</or>
+				<feature name="ABrefs_st3"/>
+				<feature name="BCrefs_st3"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>relationsA</var>
+					<not>
+						<var>A</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>R1_SB_st3</var>
+						<var>R2_SB_st3</var>
+					</disj>
+					<not>
+						<var>B</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R2_SC_st3</var>
+					<not>
+						<var>C</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>A</var>
+					<disj>
+						<var>R1_SB_st3</var>
+						<var>ABrefs_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>B</var>
+					<disj>
+						<var>R1_SA_st3</var>
+						<var>ABrefs_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>C</var>
+					<disj>
+						<var>R2_SB_st3</var>
+						<var>BCrefs_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ABrefs_st3</var>
+					<conj>
+						<var>SA_st3</var>
+						<conj>
+							<not>
+								<var>relationsA</var>
+							</not>
+							<conj>
+								<var>SB_st3</var>
+								<not>
+									<var>R1_SB_st3</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BCrefs_st3</var>
+					<conj>
+						<conj>
+							<var>SB_st3</var>
+							<not>
+								<var>R2_SB_st3</var>
+							</not>
+						</conj>
+						<conj>
+							<var>SC_st3</var>
+							<not>
+								<var>R2_SC_st3</var>
+							</not>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>BaseB_st3-2</var>
+						<var>BaseB_st3-1ttt</var>
+					</disj>
+					<var>B</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseA_st3-2</var>
+					<var>A</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseC_st3-2</var>
+					<var>C</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SB_st3-1</var>
+					<not>
+						<var>SB_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SA_st3_2</var>
+					<not>
+						<var>SA_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseB_st3-1</var>
+					<not>
+						<var>BrefA_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseA_st3-1</var>
+					<not>
+						<var>ArefB_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefC_st3-1</var>
+					<var>BrefC_st3</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>BaseB_st3-1</var>
+						<var>BaseB_st3-2</var>
+					</disj>
+					<not>
+						<var>rltsB</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>rltsB-2</var>
+					<var>rltsB</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

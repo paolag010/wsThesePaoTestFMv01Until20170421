@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="st3">
+				<or mandatory="true" name="SB-SC_st3">
+					<or mandatory="true" name="SB_st3">
+						<and mandatory="true" name="relationsB">
+							<alt mandatory="true" name="R2_SB_st3">
+								<and mandatory="true" name="BembC_st3">
+									<and mandatory="true" name="SC_st3-1">
+										<feature mandatory="true" name="BaseC_st3-1"/>
+									</and>
+								</and>
+								<and mandatory="true" name="BrefC_st3">
+									<alt mandatory="true" name="SC_st3-2">
+										<feature mandatory="true" name="BaseC_st3-2"/>
+										<and mandatory="true" name="R2_SC_st3-1">
+											<and mandatory="true" name="CembB_st3-1">
+												<and mandatory="true" name="SB_st3-1-1ttt">
+													<feature mandatory="true" name="BaseB_st3-3"/>
+												</and>
+											</and>
+										</and>
+									</alt>
+								</and>
+							</alt>
+						</and>
+						<feature mandatory="true" name="B"/>
+					</or>
+					<or mandatory="true" name="SC_st3">
+						<and mandatory="true" name="relationsC">
+							<alt mandatory="true" name="R2_SC_st3">
+								<and mandatory="true" name="CembB_st3">
+									<and mandatory="true" name="SB_st3-1">
+										<feature mandatory="true" name="BaseB_st3-1ttt"/>
+									</and>
+								</and>
+								<and mandatory="true" name="CrefB_st3">
+									<alt mandatory="true" name="SB_st3-2">
+										<feature mandatory="true" name="BaseB_st3-2ttt"/>
+										<and mandatory="true" name="R2_SB_st3_2">
+											<and mandatory="true" name="BembC_st3-1ttt">
+												<and mandatory="true" name="SC_st3-1-1ttt">
+													<feature mandatory="true" name="BaseC_st3-3"/>
+												</and>
+											</and>
+										</and>
+									</alt>
+								</and>
+							</alt>
+						</and>
+						<feature mandatory="true" name="C"/>
+					</or>
+				</or>
+				<feature name="BCrefs_st3"/>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>relationsB</var>
+					<not>
+						<var>B</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>relationsC</var>
+					<not>
+						<var>C</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>B</var>
+					<disj>
+						<var>R2_SC_st3</var>
+						<var>BCrefs_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>C</var>
+					<disj>
+						<var>R2_SB_st3</var>
+						<var>BCrefs_st3</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BCrefs_st3</var>
+					<conj>
+						<var>SB_st3</var>
+						<conj>
+							<not>
+								<var>relationsB</var>
+							</not>
+							<conj>
+								<var>SC_st3</var>
+								<not>
+									<var>relationsC</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseC_st3-2</var>
+					<var>C</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseB_st3-2ttt</var>
+					<var>B</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R2_SC_st3-1</var>
+					<not>
+						<var>SC_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R2_SB_st3_2</var>
+					<not>
+						<var>SB_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseC_st3-1</var>
+					<not>
+						<var>CrefB_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseB_st3-1ttt</var>
+					<not>
+						<var>BrefC_st3</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

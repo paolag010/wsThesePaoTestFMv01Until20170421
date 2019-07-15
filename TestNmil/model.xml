@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and abstract="true" mandatory="true" name="TestNmil">
+				<and name="SA">
+					<feature name="A"/>
+					<alt name="R1_SA">
+						<feature mandatory="true" name="AembB"/>
+						<feature mandatory="true" name="ArefB"/>
+						<feature mandatory="true" name="ABref"/>
+						<feature mandatory="true" name="ParentB"/>
+					</alt>
+				</and>
+				<and name="SB">
+					<feature name="B"/>
+					<and name="R1_SB">
+						<feature name="BembA"/>
+						<feature name="BrefA"/>
+						<feature name="BAref"/>
+						<feature name="ParentA"/>
+					</and>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>R1_SA</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SB</var>
+					<var>SA</var>
+				</imp>
+			</rule>
+			<rule>
+				<eq>
+					<var>AembB</var>
+					<var>ParentA</var>
+				</eq>
+			</rule>
+			<rule>
+				<eq>
+					<var>BembA</var>
+					<var>ParentB</var>
+				</eq>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

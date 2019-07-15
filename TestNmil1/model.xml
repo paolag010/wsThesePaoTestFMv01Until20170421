@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<or abstract="true" mandatory="true" name="TestNmil1">
+				<and mandatory="true" name="SA">
+					<feature mandatory="true" name="A"/>
+					<alt name="R1_SA">
+						<feature mandatory="true" name="AembB"/>
+						<feature mandatory="true" name="ArefB"/>
+						<feature mandatory="true" name="ABref"/>
+						<feature mandatory="true" name="ParentB-A"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="SB">
+					<feature mandatory="true" name="B"/>
+					<alt name="R1_SB">
+						<feature mandatory="true" name="BembA"/>
+						<feature mandatory="true" name="BrefA"/>
+						<feature mandatory="true" name="BAref"/>
+						<feature mandatory="true" name="ParentA"/>
+					</alt>
+					<alt name="R2_SB">
+						<feature mandatory="true" name="BembC"/>
+						<feature mandatory="true" name="BrefC"/>
+						<feature mandatory="true" name="BCref"/>
+						<feature mandatory="true" name="ParentC"/>
+					</alt>
+				</and>
+				<and mandatory="true" name="SC">
+					<feature mandatory="true" name="C"/>
+					<alt name="R2_SC">
+						<feature mandatory="true" name="CembB"/>
+						<feature mandatory="true" name="CrefB"/>
+						<feature mandatory="true" name="CBref"/>
+						<feature mandatory="true" name="ParentB-C"/>
+					</alt>
+				</and>
+			</or>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>R1_SA</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SB</var>
+					<var>SA</var>
+				</imp>
+			</rule>
+			<rule>
+				<eq>
+					<var>AembB</var>
+					<var>ParentA</var>
+				</eq>
+			</rule>
+			<rule>
+				<eq>
+					<var>BembA</var>
+					<var>ParentB-A</var>
+				</eq>
+			</rule>
+			<rule>
+				<imp>
+					<var>R2_SC</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R2_SB</var>
+					<var>SC</var>
+				</imp>
+			</rule>
+			<rule>
+				<eq>
+					<var>CembB</var>
+					<var>ParentC</var>
+				</eq>
+			</rule>
+			<rule>
+				<eq>
+					<var>BembC</var>
+					<var>ParentB-C</var>
+				</eq>
+			</rule>
+			<rule>
+				<conj>
+					<imp>
+						<var>ParentA</var>
+						<not>
+							<var>ParentC</var>
+						</not>
+					</imp>
+					<imp>
+						<var>ParentC</var>
+						<not>
+							<var>ParentA</var>
+						</not>
+					</imp>
+				</conj>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

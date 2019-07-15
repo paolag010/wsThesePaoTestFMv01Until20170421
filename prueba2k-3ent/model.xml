@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="sch">
+				<or mandatory="true" name="SA_SB_SC">
+					<alt mandatory="true" name="SA">
+						<and mandatory="true" name="relationsA">
+							<and mandatory="true" name="R1_SA">
+								<alt mandatory="true" name="A_B">
+									<and mandatory="true" name="AembB">
+										<and name="B_?_1">
+											<alt mandatory="true" name="R2_SB_1">
+												<feature mandatory="true" name="BembC_1"/>
+												<feature mandatory="true" name="BrefC_1"/>
+											</alt>
+										</and>
+									</and>
+									<feature mandatory="true" name="ArefB"/>
+								</alt>
+							</and>
+						</and>
+						<feature mandatory="true" name="A"/>
+					</alt>
+					<alt mandatory="true" name="SB">
+						<or mandatory="true" name="relationsB">
+							<and mandatory="true" name="R1_SB">
+								<alt mandatory="true" name="B_A">
+									<feature mandatory="true" name="BembA"/>
+									<feature mandatory="true" name="BrefA"/>
+								</alt>
+							</and>
+							<and mandatory="true" name="R2_SB">
+								<alt mandatory="true" name="B_C">
+									<feature mandatory="true" name="BembC"/>
+									<feature mandatory="true" name="BrefC"/>
+								</alt>
+							</and>
+						</or>
+						<feature mandatory="true" name="B"/>
+					</alt>
+					<alt mandatory="true" name="SC">
+						<and mandatory="true" name="relationsC">
+							<and mandatory="true" name="R2_SC">
+								<alt mandatory="true" name="C_B">
+									<and mandatory="true" name="CembB">
+										<and name="B_?_2">
+											<alt mandatory="true" name="R1_SB_1">
+												<feature mandatory="true" name="BembA_1"/>
+												<feature mandatory="true" name="BrefA_1"/>
+											</alt>
+										</and>
+									</and>
+									<feature mandatory="true" name="CrefB"/>
+								</alt>
+							</and>
+						</and>
+						<feature mandatory="true" name="C"/>
+					</alt>
+				</or>
+				<alt name="refs">
+					<and mandatory="true" name="refsGroups">
+						<or mandatory="true" name="2refs">
+							<feature mandatory="true" name="ABrefs"/>
+							<feature mandatory="true" name="BCrefs"/>
+						</or>
+					</and>
+					<and mandatory="true" name="allRefs">
+						<and mandatory="true" name="3refs">
+							<feature mandatory="true" name="ABCrefs"/>
+						</and>
+					</and>
+				</alt>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>SA_SB_SC</var>
+					<disj>
+						<var>SA</var>
+						<disj>
+							<var>SB</var>
+							<var>SC</var>
+						</disj>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ABrefs</var>
+					<conj>
+						<var>SA</var>
+						<conj>
+							<not>
+								<var>R1_SA</var>
+							</not>
+							<conj>
+								<var>SB</var>
+								<not>
+									<var>R1_SB</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BCrefs</var>
+					<conj>
+						<var>SB</var>
+						<conj>
+							<not>
+								<var>R2_SB</var>
+							</not>
+							<conj>
+								<var>SC</var>
+								<not>
+									<var>R2_SC</var>
+								</not>
+							</conj>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>A</var>
+					<disj>
+						<var>ABrefs</var>
+						<disj>
+							<var>R1_SB</var>
+							<var>ABCrefs</var>
+						</disj>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>B</var>
+					<disj>
+						<conj>
+							<disj>
+								<var>ABrefs</var>
+								<var>R1_SA</var>
+							</disj>
+							<disj>
+								<var>BCrefs</var>
+								<var>R2_SC</var>
+							</disj>
+						</conj>
+						<var>ABCrefs</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>C</var>
+					<disj>
+						<var>BCrefs</var>
+						<disj>
+							<var>R2_SB</var>
+							<var>ABCrefs</var>
+						</disj>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefA</var>
+					<var>SA</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefC</var>
+					<var>SC</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefB</var>
+					<var>SB</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefC_1</var>
+					<var>SC</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefA_1</var>
+					<var>SA</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB</var>
+					<not>
+						<var>BrefA</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefC</var>
+					<not>
+						<var>CrefB</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ArefB</var>
+					<not>
+						<var>BembA</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<disj>
+						<var>BrefA</var>
+						<var>BrefA_1</var>
+					</disj>
+					<not>
+						<var>AembB</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>CrefB</var>
+					<not>
+						<var>BembC</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefC</var>
+					<not>
+						<var>CembB</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>SB</var>
+						<not>
+							<var>R1_SB</var>
+						</not>
+					</conj>
+					<disj>
+						<var>SA</var>
+						<var>R1_SB_1</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>SB</var>
+						<not>
+							<var>R2_SB</var>
+						</not>
+					</conj>
+					<disj>
+						<var>SC</var>
+						<var>R2_SB_1</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>AembB</var>
+						<not>
+							<var>R2_SB_1</var>
+						</not>
+					</conj>
+					<disj>
+						<var>SB</var>
+						<var>SC</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<conj>
+						<var>CembB</var>
+						<not>
+							<var>R1_SB_1</var>
+						</not>
+					</conj>
+					<disj>
+						<var>SB</var>
+						<var>SA</var>
+					</disj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>ABCrefs</var>
+					<conj>
+						<var>A</var>
+						<conj>
+							<var>B</var>
+							<var>C</var>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BrefC_1</var>
+					<not>
+						<var>CembB</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel>
+		<properties/>
+		<struct>
+			<and mandatory="true" name="top">
+				<or abstract="true" mandatory="true" name="st3">
+					<or mandatory="true" name="SA_st3">
+						<alt mandatory="true" name="R1_SA_st3">
+							<and mandatory="true" name="AembB_st3">
+								<and mandatory="true" name="SB_st3-1">
+									<feature mandatory="true" name="BaseB_st3-1"/>
+								</and>
+							</and>
+							<and mandatory="true" name="ArefB_st3">
+								<alt mandatory="true" name="SB_st3-2">
+									<feature mandatory="true" name="BaseB_st3-2"/>
+									<and mandatory="true" name="R1_SB_st3-1">
+										<and mandatory="true" name="BembA_st3-1">
+											<and mandatory="true" name="SA_st3-1-1">
+												<feature mandatory="true" name="BaseA_st3-3"/>
+											</and>
+										</and>
+									</and>
+								</alt>
+							</and>
+						</alt>
+						<feature mandatory="true" name="A"/>
+					</or>
+					<or mandatory="true" name="SB_st3">
+						<alt mandatory="true" name="R1_SB_st3">
+							<and mandatory="true" name="BembA_st3">
+								<and mandatory="true" name="SA_st3-1">
+									<feature mandatory="true" name="BaseA_st3-1"/>
+								</and>
+							</and>
+							<and mandatory="true" name="BrefA_st3">
+								<alt mandatory="true" name="SA_st3-2">
+									<feature mandatory="true" name="BaseA_st3-2"/>
+									<and mandatory="true" name="R1_SA_st3_2">
+										<and mandatory="true" name="AembB_st3-1">
+											<and mandatory="true" name="SB_st3-1-1">
+												<feature mandatory="true" name="BaseB_st3-3"/>
+											</and>
+										</and>
+									</and>
+								</alt>
+							</and>
+						</alt>
+						<feature mandatory="true" name="B"/>
+					</or>
+				</or>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>R1_SA_st3</var>
+					<not>
+						<var>A</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SB_st3</var>
+					<not>
+						<var>B</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseB_st3-1</var>
+					<not>
+						<var>BrefA_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseB_st3-2</var>
+					<var>B</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SB_st3-1</var>
+					<not>
+						<var>R1_SB_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SB_st3-1</var>
+					<not>
+						<var>B</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseA_st3-2</var>
+					<var>A</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>BaseA_st3-1</var>
+					<not>
+						<var>ArefB_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SA_st3_2</var>
+					<not>
+						<var>R1_SA_st3</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>R1_SA_st3_2</var>
+					<not>
+						<var>A</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>A</var>
+					<var>R1_SB_st3</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>B</var>
+					<var>R1_SA_st3</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>

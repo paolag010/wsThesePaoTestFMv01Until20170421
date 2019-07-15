@@ -1,0 +1,9 @@
+public refines class Main {
+	   public void print(){
+		      Super().print();
+		   }
+
+		   public static void main(String[] args) {
+		      new Main().print();
+		   } 
+}
